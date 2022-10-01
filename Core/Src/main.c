@@ -50,9 +50,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
-void display7SEG(int num);
-void update7SEG(int index);
-void updateClockBuffer(int hour, int minute);
+void updateLEDMatrix ( int index );
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -112,15 +110,19 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  //int index_led_matrix = 0;
+  int index_led_matrix = 0;
   setTimer0(10);
-  GPIOB->ODR = 0xff2e;
   while (1)
   {
     /* USER CODE END WHILE */
-	  HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, 0);
-	  HAL_GPIO_WritePin(ROW0_GPIO_Port, ROW0_Pin, 1);
-	  HAL_Delay(1000);
+	  if (timer0_flag == 1){
+		  setTimer0(500);
+		  //TODO
+		  updateLEDMatrix(index_led_matrix++);
+		  if (index_led_matrix > 7){
+			  index_led_matrix = 0;
+		  }
+	  }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -263,25 +265,41 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 const int MAX_LED_MATRIX = 8;
-int index_led_matrix = 0;
-uint8_t matrix_buffer [8] = {0x01 , 0x02 , 0x03 , 0x04 , 0x05 , 0x06 , 0x07 , 0x08 };
+uint8_t matrix_buffer [8] = {0x11 , 0x22 , 0x33 , 0x44 , 0x55 , 0x66 , 0x77 , 0xff };
 void updateLEDMatrix ( int index ) {
+	GPIOB->ODR = 0x00ff;
 	switch (index){
 		case 0:
+			GPIOA->ODR = (0x0000 | (matrix_buffer[0] << 8)) | (matrix_buffer[0] << 2);
+			GPIOB->ODR = 0x01ff;
 			break;
 		case 1:
+			GPIOA->ODR = (0x0000 | (matrix_buffer[1] << 8)) | (matrix_buffer[1] << 2);
+			GPIOB->ODR = 0x02ff;
 			break;
 		case 2:
+			GPIOA->ODR = (0x0000 | (matrix_buffer[2] << 8)) | (matrix_buffer[2] << 2);
+			GPIOB->ODR = 0x04ff;
 			break;
 		case 3:
+			GPIOA->ODR = (0x0000 | (matrix_buffer[3] << 8)) | (matrix_buffer[3] << 2);
+			GPIOB->ODR = 0x08ff;
 			break;
 		case 4:
+			GPIOA->ODR = (0x0000 | (matrix_buffer[4] << 8)) | (matrix_buffer[4] << 2);
+			GPIOB->ODR = 0x10ff;
 			break;
 		case 5:
+			GPIOA->ODR = (0x0000 | (matrix_buffer[5] << 8)) | (matrix_buffer[5] << 2);
+			GPIOB->ODR = 0x20ff;
 			break;
 		case 6:
+			GPIOA->ODR = (0x0000 | (matrix_buffer[6] << 8)) | (matrix_buffer[6] << 2);
+			GPIOB->ODR = 0x40ff;
 			break;
 		case 7:
+			GPIOA->ODR = (0x0000 | (matrix_buffer[7] << 8)) | (matrix_buffer[7] << 2);
+			GPIOB->ODR = 0x80ff;
 			break;
 		default:
 			break;
