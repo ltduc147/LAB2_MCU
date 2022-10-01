@@ -55,7 +55,6 @@ void updateClockBuffer(int hour, int minute);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
 /* USER CODE END 0 */
 
 /**
