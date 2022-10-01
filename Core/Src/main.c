@@ -93,7 +93,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int hour = 14, minute = 59,  second = 30;
+  int hour = 15, minute = 8,  second = 50;
   while (1)
   {
     /* USER CODE END WHILE */
@@ -110,7 +110,7 @@ int main(void)
 		  hour = 0;
 	  }
 	  updateClockBuffer(hour, minute);
-	  HAL_Delay(100);
+	  HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -308,7 +308,6 @@ void update7SEG(int index){
 			break;
 		case 3:
 			//Display the forth 7SEG with led_buffer[3]
-			display7SEG(led_buffer[3]);
 			HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
 			HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
 			HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
