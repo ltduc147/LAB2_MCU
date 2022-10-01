@@ -302,13 +302,13 @@ void update7SEG(int index){
 	}
 }
 
-int count_7segment = 50;
+int count_7segment = 25;
 int count_dot = 100;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if (count_7segment > 0){
 		count_7segment--;
 		if (count_7segment <= 0){
-			count_7segment = 50;
+			count_7segment = 25;
 			// TODO
 			update7SEG(index_led++);
 			if (index_led > 3){
