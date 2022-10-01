@@ -537,7 +537,7 @@ void display7SEG(int num){
 080003c0 <HAL_TIM_PeriodElapsedCallback>:
 
 int count_7segment = 50;
-int count_led = 100;
+int count_dot = 100;
 int status = 3;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
  80003c0:	b580      	push	{r7, lr}
@@ -695,23 +695,23 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 			}
 		}
 	}
-	if (count_led > 0){
+	if (count_dot > 0){
  80004ea:	4b0f      	ldr	r3, [pc, #60]	; (8000528 <HAL_TIM_PeriodElapsedCallback+0x168>)
  80004ec:	681b      	ldr	r3, [r3, #0]
  80004ee:	2b00      	cmp	r3, #0
  80004f0:	dd0f      	ble.n	8000512 <HAL_TIM_PeriodElapsedCallback+0x152>
-		count_led--;
+		count_dot--;
  80004f2:	4b0d      	ldr	r3, [pc, #52]	; (8000528 <HAL_TIM_PeriodElapsedCallback+0x168>)
  80004f4:	681b      	ldr	r3, [r3, #0]
  80004f6:	3b01      	subs	r3, #1
  80004f8:	4a0b      	ldr	r2, [pc, #44]	; (8000528 <HAL_TIM_PeriodElapsedCallback+0x168>)
  80004fa:	6013      	str	r3, [r2, #0]
-		if (count_led <= 0){
+		if (count_dot <= 0){
  80004fc:	4b0a      	ldr	r3, [pc, #40]	; (8000528 <HAL_TIM_PeriodElapsedCallback+0x168>)
  80004fe:	681b      	ldr	r3, [r3, #0]
  8000500:	2b00      	cmp	r3, #0
  8000502:	dc06      	bgt.n	8000512 <HAL_TIM_PeriodElapsedCallback+0x152>
-			count_led = 100;
+			count_dot = 100;
  8000504:	4b08      	ldr	r3, [pc, #32]	; (8000528 <HAL_TIM_PeriodElapsedCallback+0x168>)
  8000506:	2264      	movs	r2, #100	; 0x64
  8000508:	601a      	str	r2, [r3, #0]

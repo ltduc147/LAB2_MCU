@@ -2485,9 +2485,9 @@ LOAD c:/st/stm32cubeide_1.10.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ext
  .data.count_7segment
                 0x0000000020000000        0x4 ./Core/Src/main.o
                 0x0000000020000000                count_7segment
- .data.count_led
+ .data.count_dot
                 0x0000000020000004        0x4 ./Core/Src/main.o
-                0x0000000020000004                count_led
+                0x0000000020000004                count_dot
  .data.status   0x0000000020000008        0x4 ./Core/Src/main.o
                 0x0000000020000008                status
  .data.SystemCoreClock

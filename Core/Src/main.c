@@ -263,7 +263,7 @@ void display7SEG(int num){
 }
 
 int count_7segment = 50;
-int count_led = 100;
+int count_dot = 100;
 int status = 3;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if (count_7segment > 0){
@@ -302,10 +302,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 			}
 		}
 	}
-	if (count_led > 0){
-		count_led--;
-		if (count_led <= 0){
-			count_led = 100;
+	if (count_dot > 0){
+		count_dot--;
+		if (count_dot <= 0){
+			count_dot = 100;
 			//TODO
 			HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		}
