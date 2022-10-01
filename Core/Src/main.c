@@ -114,11 +114,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   //int index_led_matrix = 0;
   setTimer0(10);
-  GPIOB->ODR = 0x1111;
+  GPIOB->ODR = 0xff2e;
   while (1)
   {
     /* USER CODE END WHILE */
-	  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+	  HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, 0);
+	  HAL_GPIO_WritePin(ROW0_GPIO_Port, ROW0_Pin, 1);
 	  HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
