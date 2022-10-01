@@ -222,6 +222,43 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void display7SEG(int num){
+	switch (num){
+			case 0:
+				GPIOB->ODR =0x0040;
+				break;
+			case 1:
+				GPIOB->ODR =0x0079;
+				break;
+			case 2:
+				GPIOB->ODR =0x0024;
+				break;
+			case 3:
+				GPIOB->ODR =0x0030;
+				break;
+			case 4:
+				GPIOB->ODR =0x0019;
+				break;
+			case 5:
+				GPIOB->ODR =0x0012;
+				break;
+			case 6:
+				GPIOB->ODR =0x0002;
+				break;
+			case 7:
+				GPIOB->ODR =0x0078;
+				break;
+			case 8:
+				GPIOB->ODR =0x0000;
+				break;
+			case 9:
+				GPIOB->ODR =0x0010;
+				break;
+			default:
+				break;
+		}
+}
+
 int count = 50;
 int status = 1;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
@@ -233,13 +270,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 			if (status == 0) {
 				status = 1;
 				HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
+				display7SEG(2);
 				HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 0);
-				GPIOB->ODR = 0x0024;
 			} else {
 				status = 0;
-				HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 0);
 				HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
-				GPIOB->ODR = 0x0079;
+				display7SEG(1);
+				HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 0);
 			}
 		}
 	}
