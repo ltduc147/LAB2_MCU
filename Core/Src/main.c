@@ -51,6 +51,7 @@ static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
 void updateLEDMatrix ( int index );
+void shiftbuffer();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -58,11 +59,19 @@ void updateLEDMatrix ( int index );
 int timer0_count = 0;
 int timer0_flag = 0;
 
-int TIMER_CYCLE = 10;
+int timer1_count = 0;
+int timer1_flag = 0;
+
+int TIMER_CYCLE = 1;
 
 void setTimer0(int duration){
 	timer0_count = duration / TIMER_CYCLE;
 	timer0_flag = 0;
+}
+
+void setTimer1(int duration){
+	timer1_count = duration / TIMER_CYCLE;
+	timer1_flag = 0;
 }
 
 void timer_run(){
@@ -72,6 +81,12 @@ void timer_run(){
 			timer0_flag = 1;
 		}
 	}
+	if (timer1_count > 0){
+			timer1_count--;
+			if (timer1_count <= 0){
+				timer1_flag = 1;
+			}
+		}
 }
 /* USER CODE END 0 */
 
@@ -111,18 +126,24 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int index_led_matrix = 0;
-  setTimer0(10);
+  setTimer0(1);
+  setTimer1(50);
   while (1)
   {
-    /* USER CODE END WHILE */
 	  if (timer0_flag == 1){
-		  setTimer0(500);
-		  //TODO
-		  updateLEDMatrix(index_led_matrix++);
-		  if (index_led_matrix > 7){
-			  index_led_matrix = 0;
-		  }
-	  }
+	  		  setTimer0(1);
+	  		  // TODO
+	  		  updateLEDMatrix(index_led_matrix++);
+	  		  if (index_led_matrix > 7){
+	  			  index_led_matrix = 0;
+	  		  }
+	  	  }
+	  	  if (timer1_flag == 1){
+	  		  setTimer1(50);
+	  		  shiftbuffer();
+	  	  }
+    /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -183,7 +204,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 7999;
+  htim2.Init.Prescaler = 799;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 9;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -265,7 +286,8 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 const int MAX_LED_MATRIX = 8;
-uint8_t matrix_buffer [8] = {0x11 , 0x22 , 0x33 , 0x44 , 0x55 , 0x66 , 0x77 , 0xff };
+int index_led_matrix = 0;
+uint8_t matrix_buffer [8] = {0x00 , 0xfc , 0xfe , 0x12 , 0x12 , 0xfe , 0xfc , 0x00 };
 void updateLEDMatrix ( int index ) {
 	GPIOB->ODR = 0x00ff;
 	switch (index){
@@ -305,6 +327,14 @@ void updateLEDMatrix ( int index ) {
 			break;
 
 	}
+}
+
+void shiftbuffer(){
+	int temp = matrix_buffer[0];
+	for (int i = 0; i <= 6 ; i++){
+		matrix_buffer[i] = matrix_buffer[i+1];
+	}
+	matrix_buffer[7] = temp;
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
