@@ -114,7 +114,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 	  if (timer0_flag == 1){
-		  setTimer0(1000);
+		  setTimer0(2000);
 		  //TODO
 		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 	  }

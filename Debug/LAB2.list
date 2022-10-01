@@ -195,8 +195,8 @@ int main(void)
  80001d8:	681b      	ldr	r3, [r3, #0]
  80001da:	2b01      	cmp	r3, #1
  80001dc:	d1fb      	bne.n	80001d6 <main+0x22>
-		  setTimer0(1000);
- 80001de:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+		  setTimer0(2000);
+ 80001de:	f44f 60fa 	mov.w	r0, #2000	; 0x7d0
  80001e2:	f7ff ffb3 	bl	800014c <setTimer0>
 		  //TODO
 		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
