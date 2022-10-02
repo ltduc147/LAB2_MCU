@@ -133,7 +133,6 @@ int main(void)
   setTimer1(10);
   while (1)
   {
-    /* USER CODE END WHILE */
 	  if (timer0_flag == 1){
 		  setTimer0(1000);
 		  second++;
@@ -158,6 +157,8 @@ int main(void)
 			  index_led = 0;
 		  }
 	  }
+	  /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
