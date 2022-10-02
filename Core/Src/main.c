@@ -95,7 +95,7 @@ int main(void)
   int hour = 15, minute = 8,  second = 50;
   while (1)
   {
-    /* USER CODE END WHILE */
+
 	  second++;
 	  if (second >= 60){
 		  second = 0;
@@ -110,6 +110,8 @@ int main(void)
 	  }
 	  updateClockBuffer(hour, minute);
 	  HAL_Delay(1000);
+	  /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
