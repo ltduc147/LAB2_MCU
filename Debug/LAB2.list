@@ -635,7 +635,7 @@ void updateLEDMatrix ( int index ) {
  8000470:	08000521 	.word	0x08000521
  8000474:	0800053d 	.word	0x0800053d
 		case 0:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[0] << 8)) | (matrix_buffer[0] << 2);
+			GPIOA->ODR = (matrix_buffer[0] << 8) | (matrix_buffer[0] << 2);
  8000478:	4b3b      	ldr	r3, [pc, #236]	; (8000568 <updateLEDMatrix+0x12c>)
  800047a:	781b      	ldrb	r3, [r3, #0]
  800047c:	021a      	lsls	r2, r3, #8
@@ -652,7 +652,7 @@ void updateLEDMatrix ( int index ) {
 			break;
  8000492:	e062      	b.n	800055a <updateLEDMatrix+0x11e>
 		case 1:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[1] << 8)) | (matrix_buffer[1] << 2);
+			GPIOA->ODR = (matrix_buffer[1] << 8) | (matrix_buffer[1] << 2);
  8000494:	4b34      	ldr	r3, [pc, #208]	; (8000568 <updateLEDMatrix+0x12c>)
  8000496:	785b      	ldrb	r3, [r3, #1]
  8000498:	021a      	lsls	r2, r3, #8
@@ -669,7 +669,7 @@ void updateLEDMatrix ( int index ) {
 			break;
  80004ae:	e054      	b.n	800055a <updateLEDMatrix+0x11e>
 		case 2:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[2] << 8)) | (matrix_buffer[2] << 2);
+			GPIOA->ODR = (matrix_buffer[2] << 8) | (matrix_buffer[2] << 2);
  80004b0:	4b2d      	ldr	r3, [pc, #180]	; (8000568 <updateLEDMatrix+0x12c>)
  80004b2:	789b      	ldrb	r3, [r3, #2]
  80004b4:	021a      	lsls	r2, r3, #8
@@ -686,7 +686,7 @@ void updateLEDMatrix ( int index ) {
 			break;
  80004ca:	e046      	b.n	800055a <updateLEDMatrix+0x11e>
 		case 3:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[3] << 8)) | (matrix_buffer[3] << 2);
+			GPIOA->ODR = (matrix_buffer[3] << 8) | (matrix_buffer[3] << 2);
  80004cc:	4b26      	ldr	r3, [pc, #152]	; (8000568 <updateLEDMatrix+0x12c>)
  80004ce:	78db      	ldrb	r3, [r3, #3]
  80004d0:	021a      	lsls	r2, r3, #8
@@ -703,7 +703,7 @@ void updateLEDMatrix ( int index ) {
 			break;
  80004e6:	e038      	b.n	800055a <updateLEDMatrix+0x11e>
 		case 4:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[4] << 8)) | (matrix_buffer[4] << 2);
+			GPIOA->ODR = (matrix_buffer[4] << 8) | (matrix_buffer[4] << 2);
  80004e8:	4b1f      	ldr	r3, [pc, #124]	; (8000568 <updateLEDMatrix+0x12c>)
  80004ea:	791b      	ldrb	r3, [r3, #4]
  80004ec:	021a      	lsls	r2, r3, #8
@@ -720,7 +720,7 @@ void updateLEDMatrix ( int index ) {
 			break;
  8000502:	e02a      	b.n	800055a <updateLEDMatrix+0x11e>
 		case 5:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[5] << 8)) | (matrix_buffer[5] << 2);
+			GPIOA->ODR = (matrix_buffer[5] << 8) | (matrix_buffer[5] << 2);
  8000504:	4b18      	ldr	r3, [pc, #96]	; (8000568 <updateLEDMatrix+0x12c>)
  8000506:	795b      	ldrb	r3, [r3, #5]
  8000508:	021a      	lsls	r2, r3, #8
@@ -737,7 +737,7 @@ void updateLEDMatrix ( int index ) {
 			break;
  800051e:	e01c      	b.n	800055a <updateLEDMatrix+0x11e>
 		case 6:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[6] << 8)) | (matrix_buffer[6] << 2);
+			GPIOA->ODR = (matrix_buffer[6] << 8) | (matrix_buffer[6] << 2);
  8000520:	4b11      	ldr	r3, [pc, #68]	; (8000568 <updateLEDMatrix+0x12c>)
  8000522:	799b      	ldrb	r3, [r3, #6]
  8000524:	021a      	lsls	r2, r3, #8
@@ -754,7 +754,7 @@ void updateLEDMatrix ( int index ) {
 			break;
  800053a:	e00e      	b.n	800055a <updateLEDMatrix+0x11e>
 		case 7:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[7] << 8)) | (matrix_buffer[7] << 2);
+			GPIOA->ODR = (matrix_buffer[7] << 8) | (matrix_buffer[7] << 2);
  800053c:	4b0a      	ldr	r3, [pc, #40]	; (8000568 <updateLEDMatrix+0x12c>)
  800053e:	79db      	ldrb	r3, [r3, #7]
  8000540:	021a      	lsls	r2, r3, #8

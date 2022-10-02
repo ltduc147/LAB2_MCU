@@ -291,35 +291,35 @@ void updateLEDMatrix ( int index ) {
 	GPIOB->ODR = 0x00ff;
 	switch (index){
 		case 0:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[0] << 8)) | (matrix_buffer[0] << 2);
+			GPIOA->ODR = (matrix_buffer[0] << 8) | (matrix_buffer[0] << 2);
 			GPIOB->ODR = 0x01ff;
 			break;
 		case 1:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[1] << 8)) | (matrix_buffer[1] << 2);
+			GPIOA->ODR = (matrix_buffer[1] << 8) | (matrix_buffer[1] << 2);
 			GPIOB->ODR = 0x02ff;
 			break;
 		case 2:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[2] << 8)) | (matrix_buffer[2] << 2);
+			GPIOA->ODR = (matrix_buffer[2] << 8) | (matrix_buffer[2] << 2);
 			GPIOB->ODR = 0x04ff;
 			break;
 		case 3:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[3] << 8)) | (matrix_buffer[3] << 2);
+			GPIOA->ODR = (matrix_buffer[3] << 8) | (matrix_buffer[3] << 2);
 			GPIOB->ODR = 0x08ff;
 			break;
 		case 4:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[4] << 8)) | (matrix_buffer[4] << 2);
+			GPIOA->ODR = (matrix_buffer[4] << 8) | (matrix_buffer[4] << 2);
 			GPIOB->ODR = 0x10ff;
 			break;
 		case 5:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[5] << 8)) | (matrix_buffer[5] << 2);
+			GPIOA->ODR = (matrix_buffer[5] << 8) | (matrix_buffer[5] << 2);
 			GPIOB->ODR = 0x20ff;
 			break;
 		case 6:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[6] << 8)) | (matrix_buffer[6] << 2);
+			GPIOA->ODR = (matrix_buffer[6] << 8) | (matrix_buffer[6] << 2);
 			GPIOB->ODR = 0x40ff;
 			break;
 		case 7:
-			GPIOA->ODR = (0x0000 | (matrix_buffer[7] << 8)) | (matrix_buffer[7] << 2);
+			GPIOA->ODR = (matrix_buffer[7] << 8) | (matrix_buffer[7] << 2);
 			GPIOB->ODR = 0x80ff;
 			break;
 		default:
