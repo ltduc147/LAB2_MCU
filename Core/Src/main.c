@@ -113,7 +113,7 @@ int main(void)
   setTimer0(10);
   while (1)
   {
-    /* USER CODE END WHILE */
+
 	  if (timer0_flag == 1){
 		  setTimer0(1000);
 		  // TODO
@@ -132,6 +132,8 @@ int main(void)
 		  updateClockBuffer(hour, minute);
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	  }
+	  /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
