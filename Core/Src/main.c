@@ -126,22 +126,21 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int index_led_matrix = 0;
-  setTimer0(1);
-  setTimer1(50);
+  setTimer0(2);
+  setTimer1(151);
   while (1)
   {
 	  if (timer0_flag == 1){
-	  		  setTimer0(1);
-	  		  // TODO
-	  		  updateLEDMatrix(index_led_matrix++);
-	  		  if (index_led_matrix > 7){
-	  			  index_led_matrix = 0;
-	  		  }
-	  	  }
-	  	  if (timer1_flag == 1){
-	  		  setTimer1(50);
-	  		  shiftbuffer();
-	  	  }
+		  setTimer0(2);
+		  updateLEDMatrix(index_led_matrix++);
+		  	  	if (index_led_matrix > 7){
+		  	  		  index_led_matrix = 0;
+		  	  	}
+	  }
+	  if (timer1_flag == 1){
+		  setTimer1(151);
+		  shiftbuffer();
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
