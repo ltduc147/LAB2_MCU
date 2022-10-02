@@ -111,10 +111,9 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int index_led_matrix = 0;
-  setTimer0(10);
+  setTimer0(50);
   while (1)
   {
-    /* USER CODE END WHILE */
 	  if (timer0_flag == 1){
 		  setTimer0(500);
 		  //TODO
@@ -123,6 +122,8 @@ int main(void)
 			  index_led_matrix = 0;
 		  }
 	  }
+    /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

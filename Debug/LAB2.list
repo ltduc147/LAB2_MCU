@@ -188,12 +188,11 @@ int main(void)
   int index_led_matrix = 0;
  80001d0:	2300      	movs	r3, #0
  80001d2:	607b      	str	r3, [r7, #4]
-  setTimer0(10);
- 80001d4:	200a      	movs	r0, #10
+  setTimer0(50);
+ 80001d4:	2032      	movs	r0, #50	; 0x32
  80001d6:	f7ff ffb9 	bl	800014c <setTimer0>
   while (1)
   {
-    /* USER CODE END WHILE */
 	  if (timer0_flag == 1){
  80001da:	4b0b      	ldr	r3, [pc, #44]	; (8000208 <main+0x54>)
  80001dc:	681b      	ldr	r3, [r3, #0]
